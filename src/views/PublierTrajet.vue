@@ -1,0 +1,172 @@
+<script setup>
+import { ref } from 'vue'
+import axios from 'axios'
+// import {useRouter} from 'vue-router'
+
+// let router = useRouter()
+let numPermis = ref()
+let immatriculation = ref('')
+let conditions = ref('')
+let items = ref([
+  'Cigarette',
+  'Animaux de compagnie',
+  'Climatisation',
+  "Nombre de place à l'arrière",
+])
+
+let photoPermis=ref([])
+let depart= ref('')
+let destination=ref('')
+let dateTrajet=ref()
+let heureDepart=ref()
+let nbrPassager=ref()
+let prix=ref()
+
+const config= {
+      headers:{
+      Authorization:'Bearer ' + localStorage.getItem('token')
+      }
+    }
+
+
+function submit(){
+  console.log(depart.value, destination.value, dateTrajet.value, heureDepart.value, nbrPassager.value, prix.value, conditions.value, numPermis.value, immatriculation.value)
+  axios
+  .post('http://localhost:8000/api/publier', {
+      "depart": depart.value,
+      "destination": destination.value,
+      "dateTrajet": dateTrajet.value,
+      "heureDepart": heureDepart.value,
+      "nbrPassager": nbrPassager.value,
+      "prix": prix.value,
+      "conditions": conditions.value,
+      "numPermis": numPermis.value,
+      "immatriculation": immatriculation.value,
+  }, config) 
+  .then((response)=>{
+      console.log(response)
+    }
+  )
+  .catch(error=> {
+    console.log(error)
+  })
+}
+ 
+</script>
+
+<template>
+    <v-layout> 
+      <v-main style="min-height: 550px;">
+        <v-app-bar color="blue" class="justify-center">
+          <div class="d-flex justify-center align-center w-100">
+            <h1>Publier un trajet</h1>
+          </div>
+        </v-app-bar>
+
+        <v-card
+          class="mx-auto  pa-8 pb-6"
+          elevation="8"
+          max-width="500"
+        >
+          <form>
+                <v-text-field
+                  v-model="depart"
+                  label=""
+                  placeholder="Lieu de départ"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="destination"
+                  label=""
+                  placeholder="Destination"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="dateTrajet"
+                  label="Date du Trajet"
+                  placeholder="ex: aaaa:mm:jj"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="heureDepart"
+                  label="Heure de départ"
+                  placeholder="ex: 14:00"
+                ></v-text-field>
+
+                <v-text-field
+                  v-model="nbrPassager"
+                  label=""
+                  placeholder="Nombre de passager"
+                ></v-text-field>
+   
+                <v-text-field
+                  v-model="prix"
+                  label=""
+                  placeholder="Prix par place"
+                ></v-text-field>
+
+                  <v-select
+                    v-model="conditions"
+                    :items="items"
+                    label="Others"
+                    placeholder="ex: Cigarette autorisée"
+                  ></v-select>
+
+                  <v-text-field
+                    v-model="numPermis"
+                    :counter="10"
+                    label=""
+                    placeholder="N°Permis de Conduire"
+                  ></v-text-field>
+
+                  <v-text-field
+                    v-model="immatriculation"
+                    :counter="7"
+                    label=""
+                    placeholder="Immatriculation du véhicule"
+                  ></v-text-field>
+
+                  <v-file-input
+                    v-model="photoPermis"
+                    placeholder="Upload your documents"
+                    label="Photo du Permis"
+                    multiple
+                    :prepend-icon="mdiPaperclip"
+                  >
+                    <template v-slot:selection="{ fileNames }">
+                      <template v-for="fileName in fileNames" :key="fileName">
+                        <v-chip
+                          size="small"
+                          label
+                          color="primary"
+                          class="me-2"
+                        >
+                          {{ fileName }}
+                        </v-chip>
+                      </template>
+                    </template>
+                  </v-file-input>
+                </form>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-btn
+              class="mx-auto"
+              color="success"
+              size="large"
+              variant="flat"
+              type="submit"
+              @click="submit"
+            >
+              Publier
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-main>
+    </v-layout>
+</template>
+
+<style scoped>
+
+</style>
