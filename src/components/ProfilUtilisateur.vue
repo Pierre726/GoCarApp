@@ -10,6 +10,7 @@ import {mdiAccount, mdiCash, mdiLogoutVariant, mdiWidgets, mdiBellOutline, mdiAc
       <v-menu
         min-width="200px"
         rounded
+        open-on-hover
       >
         <template v-slot:activator="{ props }">
           <v-btn

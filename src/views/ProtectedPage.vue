@@ -14,20 +14,27 @@ let infoUser=ref({})
 let router=useRouter()
 let drawer= ref(true)
 let rail=ref(true)
-let colors= ref([
-    'indigo',
-    'warning',
-    'pink darken-2',
-    'red lighten-1',
-    'deep-purple accent-4',
+let items= ref([
+  {
+    src: 'https://img.freepik.com/photos-premium/personne-utilisant-application-covoiturage-telephone-mobile_746318-1552.jpg?size=626&ext=jpg&ga=GA1.2.1393112986.1685581487&semt=sph',
+  },
+  {
+    src: 'https://img.freepik.com/vecteurs-libre/modele-application-partage-voiture-dessine-main_23-2150257671.jpg?size=626&ext=jpg',
+  },
+  {
+    src: 'https://img.freepik.com/vecteurs-premium/concept-partage-voiture-personnages-main-donnant-cles-voiture_126283-1725.jpg?size=626&ext=jpg&ga=GA1.2.1393112986.1685581487&semt=sph',
+  },
+  {
+    src: 'https://img.freepik.com/vecteurs-libre/homme-affaires-smartphone-loue-voiture-dans-rue-via-service-autopartage-service-autopartage-location-courte-duree-meilleur-concept-alternatif-taxi_335657-2201.jpg?size=626&ext=jpg',
+  }
 ])
-let slides= ref([
-    'First',
-    'Second',
-    'Third',
-    'Fourth',
-    'Fifth',
-])
+// let slides= ref([
+//     'First',
+//     'Second',
+//     'Third',
+//     'Fourth',
+//     'Fifth',
+// ])
 
 const config= {
   headers:{
@@ -57,6 +64,43 @@ onMounted(()=>{
 <template>
   <center class="ma-16 mb-16" v-if="isLoading"><v-progress-circular indeterminate :size="67" :width="6" ></v-progress-circular></center>
   <v-layout v-else>
+    <v-app-bar color="grey-lighten-2" name="app-bar" class="justify-center" scroll-behavior="elevate fade-image collapse"
+          scroll-threshold="1000"
+          image="https://picsum.photos/1920/1080?random"
+          >
+            <template v-slot:append>
+
+              <RouterLink to="/search-trajet">
+                <v-btn
+                  :prepend-icon="mdiMagnify"
+                  color=""  
+                  class="up"
+                  rounded
+                >
+                <p 
+                >Rechercher
+                </p>
+                </v-btn>
+              </RouterLink>
+
+              <RouterLink to="/publier-trajet">
+                <v-btn 
+                  :prepend-icon="mdiPlusCircle"
+                  color=""
+                  class="up"  
+                  rounded
+                >
+                <p 
+                >Publier trajet
+                </p>
+                </v-btn>
+              </RouterLink>
+              <ProfilUtilisateur></ProfilUtilisateur>
+            </template>
+            <div class="d-flex  w-100">
+              <h1 class="up">Welcome on Go<span class="blue">Car</span></h1>
+            </div>
+          </v-app-bar>
     <v-navigation-drawer v-model="drawer" color="grey-ligthen-2" permanent
       :rail="rail"  @click="rail = false">
           <template v-slot:prepend>
@@ -71,102 +115,85 @@ onMounted(()=>{
       <ButtonBottom></ButtonBottom>
      </template>
     </v-navigation-drawer>
-    <v-main>
-      <v-app-bar color="grey-lighten-2" name="app-bar" class="justify-center" scroll-behavior="elevate fade-image collapse"
-      scroll-threshold="800"
-      image="https://picsum.photos/1920/1080?random"
-      >
-        <template v-slot:append>
-
-          <RouterLink to="/search-trajet">
-            <v-chip 
-              :prepend-icon="mdiMagnify"
-              color="white"  
-            >
-            <p class="up"
-            >Rechercher
-            </p>
-            </v-chip>
-          </RouterLink>
-
-          <RouterLink to="/publier-trajet">
-            <v-chip 
-              :prepend-icon="mdiPlusCircle"
-              color="white"  
-            >
-            <p class="up"
-            >Publier trajet
-            </p>
-            </v-chip>
-          </RouterLink>
-          <ProfilUtilisateur></ProfilUtilisateur>
-        </template>
-        <div class="d-flex  w-100">
-          <h1 class="up">Welcome on Go<span class="blue">Car</span></h1>
-        </div>
-      </v-app-bar>
-
-      <div> 
-        <v-carousel
-          cycle
-          height="400"
-          hide-delimiter-background
-          show-arrows="hover"
-        > 
-        <v-carousel-item
-          v-for="(slide, i) in slides"
-            :key="i"
-          >
-        <v-sheet
-          :color="colors[i]"
-          height="100%"
-        >
-        <div class="d-flex fill-height justify-center align-center">
-          <div class="text-h2">
-            {{ slide }} Slide
-          </div>
-        </div>
-        </v-sheet>
-        </v-carousel-item>
-        </v-carousel>
-          
-        <div class="image">
-          <img src="https://cdn.blablacar.com/kairos/assets/images/carpool_blablabus_small-aacb46bde375e3196927..svg"/>
-        </div>
-
-        <div>
-          <h1>Un vaste choix de trajets à petits prix</h1>
-        </div>
+    <v-container>
+      <v-row>
+        <v-main>
+          <div> 
+            <v-container>
+              <v-row>
+                <v-col cols="4" sm="6">
+                  <h1>Un moment d'échange et de rencontre pour tous.</h1>  
+                </v-col>
+                <v-col cols="8" sm="6">
+                  <v-carousel
+                    cycle
+                    cover
+                    height="400"
+                    hide-delimiter-background
+                    :show-arrows="false"
+                  > 
+                  <v-carousel-item
+                    v-for="(item, i) in items"
+                      :key="i"
+                      :src="item.src"
+                    >
+                  <!-- <v-sheet
+                    :color="items[i]"
         
-        <section class="section">
-          <div class="sectionDiv">
-            <article>
-              <h2 class="presentation">Où allez-vous?</h2>
-                  <v-chip-group class="pa-9">
-                    <v-chip class="py-8">Calavi --> Cotonou</v-chip>
-                    <v-chip class="py-8">Calavi --> Lomé</v-chip>
-                    <v-chip class="py-8">Cotonou --> Parakou</v-chip>
-                    <v-chip class="py-8">Cotonou --> Ghana</v-chip>
-                    <v-chip class="py-8">Calavi --> Abomey</v-chip>
-                    <v-chip class="py-8">Porto-Novo --> Malanville</v-chip>
-                  </v-chip-group>
-            </article>
+                    height="100%"
+                  >
+                  <div class="d-flex fill-height justify-center align-center">
+                    <div class="text-h2">
+                      {{ slide }} Slide
+                    </div>
+                  </div>
+                  </v-sheet> -->
+                  </v-carousel-item>
+                  </v-carousel>
+                </v-col>
+              </v-row>
+            </v-container>
+              
+              <h1>Découvrez et obtez pour <strong>GoCar</strong>.</h1> 
+                <div class="image">
+                  <img src="https://cdn.blablacar.com/kairos/assets/images/carpool_blablabus_small-aacb46bde375e3196927..svg"/>
+                </div>
+            
+              <h1>Un vaste choix de trajets à petits prix</h1>
+            <section class="section">
+              <div class="sectionDiv">
+                <article>
+                  <h2 class="presentation">Où allez-vous?</h2>
+                      <v-chip-group class="pa-9">
+                        <v-chip class="py-8">Calavi --> Cotonou</v-chip>
+                        <v-chip class="py-8">Calavi --> Lomé</v-chip>
+                        <v-chip class="py-8">Cotonou --> Parakou</v-chip>
+                        <v-chip class="py-8">Cotonou --> Ghana</v-chip>
+                        <v-chip class="py-8">Calavi --> Abomey</v-chip>
+                        <v-chip class="py-8">Porto-Novo --> Malanville</v-chip>
+                      </v-chip-group>
+                </article>
+              </div>
+            </section>
           </div>
-        </section>
+        </v-main>
+      </v-row>
+      <v-row>
         <TheFooter></TheFooter>
-      </div>
-    </v-main>
+      </v-row>
+    </v-container>
   </v-layout>
 </template>
 
 <style scoped>
 .image{
-  margin: 30px 0;
-  height: 300px
+  margin: 20px 0;
+  height: 400px
 }
 
 .up{
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .section{
@@ -199,6 +226,7 @@ onMounted(()=>{
 .blue{
   color: rgb(82, 82, 255);
 }
+
 
 img {
   width: 100%;

@@ -1,17 +1,16 @@
 <script setup>
 import {ref} from 'vue'
 import { mdiCog, mdiLogoutVariant, mdiClose} from '@mdi/js'
-import {useRouter} from 'vue-router'
+import {useRouter, RouterLink} from 'vue-router'
 
 let router=useRouter()
 let dialog= ref(false)
 let notifications=false
 let sound=true
 let widgets=false
-
+let logout=ref(false)
 
 function logOut(){
-  let logout=ref(false)
   const config= {
     headers:{
     Authorization:'Bearer ' + localStorage.removeItem('token')
@@ -100,13 +99,13 @@ function logOut(){
       </v-card>
     </v-dialog>
     
-      <v-list-item 
+<RouterLink to="/login"><v-list-item 
       :prepend-icon="mdiLogoutVariant" 
       title="LogOut" 
       value="Log Out"
       @click="logOut"
       ></v-list-item>
-    
+    </RouterLink>   
   </v-list>
 
   <slot></slot>

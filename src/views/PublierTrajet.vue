@@ -23,10 +23,10 @@ let nbrPassager=ref()
 let prix=ref()
 
 const config= {
-      headers:{
-      Authorization:'Bearer ' + localStorage.getItem('token')
-      }
-    }
+  headers:{
+    Authorization:'Bearer ' + localStorage.getItem('token')
+  }
+}
 
 
 function submit(){
@@ -54,8 +54,8 @@ function submit(){
  
 </script>
 
-<template>
-    <v-layout> 
+<template class="layout">
+    <v-layout > 
       <v-main style="min-height: 550px;">
         <v-app-bar color="blue" class="justify-center">
           <div class="d-flex justify-center align-center w-100">
@@ -168,5 +168,7 @@ function submit(){
 </template>
 
 <style scoped>
-
+.layout{
+  background-color:rgb(33, 51, 58);
+}
 </style>

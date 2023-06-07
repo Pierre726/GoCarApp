@@ -1,12 +1,14 @@
 <script setup>
 import {RouterLink} from 'vue-router'
 import {ref} from 'vue'
+import {mdiAccount, mdiMagnify, mdiPlusCircle} from '@mdi/js'
+
 
 let items= ref([
-  { title: 'Click Me' },
-  { title: 'Click Me' },
-  { title: 'Click Me' },
-  { title: 'Click Me 2' },
+  { title: 'Qui sommes-nous?' },
+  { title: 'Contacts' },
+  { title: "Centre d'aide" },
+  { title: 'Réseaux sociaux'},
 ])
 
 let items2= [
@@ -35,15 +37,17 @@ let items2= [
           height="50"
         >
           <template v-slot:prepend>
-            <h1 class="up">Go<span class="blue">Car</span></h1>
+            <h1 class="upper text-h3">Go<span class="blue">Car</span></h1>
             <div class="d-flex justify-space-around">
               <v-menu open-on-hover>
                 <template v-slot:activator="{ props }">
                   <v-btn
-                    color="primary"
+                    class="up"
+                    rounded
+                    variant="text"
                     v-bind="props"
                   >
-                    Covoiturage
+                    <p>Covoiturage</p>
                   </v-btn>
                 </template>
               </v-menu>
@@ -51,30 +55,12 @@ let items2= [
               <v-menu open-on-hover>
                 <template v-slot:activator="{ props }">
                   <v-btn
-                    color="primary"
+                    class="up"
+                    rounded
+                    variant="text"
                     v-bind="props"
                   >
-                    About-us
-                  </v-btn>
-                </template>
-                <v-list>
-                  <v-list-item
-                    v-for="(item, index) in items"
-                    :key="index"
-                    :value="index"
-                  >
-                    <v-list-item-title>{{ item.title }}</v-list-item-title>
-                  </v-list-item>
-                </v-list>
-              </v-menu>
-
-              <v-menu open-on-hover>
-                <template v-slot:activator="{ props }">
-                  <v-btn
-                    color="primary"
-                    v-bind="props"
-                  >
-                    Contact
+                    <p>Abouts</p>
                   </v-btn>
                 </template>
                 <v-list>
@@ -91,23 +77,81 @@ let items2= [
           </template>
 
           <template v-slot:append>
-            <RouterLink to="/login">
-              <v-chip
-                class="ma-2"
-                color="success"
-              >
-                Sign in
-              </v-chip>
-            </RouterLink>
+            <RouterLink to="/">
+                <v-btn
+                  class="up"
+                  :prepend-icon="mdiMagnify"
+                  rounded
+                  variant="text"
+                >
+                <p 
+                >Rechercher
+                </p>
+                </v-btn>
+              </RouterLink>
 
-            <RouterLink to="/sign-up">
-              <v-chip
-                class="ma-2"
-                color="primary"
-              >
-                Sign up
-              </v-chip>
-            </RouterLink>
+              <RouterLink to="/">
+                <v-btn 
+                  class="up"
+                  :prepend-icon="mdiPlusCircle"
+                  rounded
+                  variant="text"
+                >
+                <p 
+                >Publier trajet
+                </p>
+                </v-btn>
+              </RouterLink>
+            
+            <v-container
+              fluid
+            >
+              <v-row>
+                <v-menu
+                  min-width="200px"
+                  rounded
+                  open-on-hover
+                >
+                  <template v-slot:activator="{ props }">
+                    <v-btn
+                      icon
+                      v-bind="props"
+                    >
+                      <v-avatar
+                      :icon="mdiAccount"
+                        color="grey-lighten-2"
+                        size="large"
+                      >
+                        <!-- <span class="text-h5">{{ user.initials }}</span> -->
+                      </v-avatar>
+                    </v-btn>
+                  </template>
+                  <v-card>
+                    <v-card-text>
+                      <div class="mx-auto">
+                        <v-divider></v-divider>
+                        <RouterLink to="/sign-up"> 
+                        <v-btn
+                          rounded
+                          variant="text"
+                        >
+                        Inscription
+                        </v-btn></RouterLink>
+                        <v-divider></v-divider>
+                        <RouterLink to="/login"> 
+                        <v-btn
+                          rounded
+                          variant="text"
+                        >
+                        Connexion
+                        </v-btn></RouterLink>
+                      </div>
+                    </v-card-text>
+                  </v-card>
+                </v-menu>
+              </v-row>
+            </v-container>
+
           </template>
         </v-app-bar>
       </v-layout>
@@ -211,8 +255,8 @@ let items2= [
 }
 
 .up{
-  padding-bottom:10px ;
-  font-weight: bold;
+  text-transform: capitalize;
+  color: rgb(45, 45, 137);
 }
 .image{
   margin: 20px auto;
@@ -246,6 +290,10 @@ let items2= [
 
 .v-card:not(.on-hover) {
   opacity: 0.8;
+}
+
+.upper{
+  font-weight: bold;
 }
 
 

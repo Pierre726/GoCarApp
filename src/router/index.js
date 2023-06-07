@@ -34,6 +34,21 @@ const router = createRouter({
       path: '/search-trajet',
       name: 'searchTrajet',
       component: () => import('../views/SearchTrajet.vue')
+    },
+    {
+      path: '/search',
+      name: 'recherche',
+      component: () => import('../views/RecherchePage.vue')
+    },
+    {
+      path: '/reservation',
+      name: 'reservation',
+      component: () => import('../views/ReservationPage.vue')
+    },
+    {
+      path: '/paiement',
+      name: 'paiement',
+      component: () => import('../views/PaiementPage.vue')
     }
   ]
 })
