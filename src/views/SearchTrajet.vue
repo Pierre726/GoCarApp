@@ -1,7 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import {useRouter} from 'vue-router'
-import {mdiPlus, mdiMinus} from '@mdi/js'
+import {mdiPlusCircleOutline, mdiMinusCircleOutline} from '@mdi/js'
 
 let router = useRouter() 
 let depart=ref()
@@ -31,67 +31,63 @@ let villes=ref(['Abomey', 'Aplahoué','Banikoara', 'Bassila', 'Bembèrèkè', 'B
 </script>
 
 <template>
-    <v-container style="max-width: 600px;">
-        <h1 class="text-center text-h3 pb-4">Où allez-vous?</h1>
-    <form>
-        <v-autocomplete
+    <v-container >
+     <h1 class="text-center text-h3 pb-4">Où allez-vous?</h1>
+      <v-row no-gutters>
+        <v-col cols="5" class="pa-0">
+         <v-autocomplete
           v-model="depart"
           color="primary"
-          label="Départ"
           :items="villes"
-          required
-          placeholder=""
-        ></v-autocomplete>
-
-        <v-autocomplete
+          placeholder="Départ"
+          variant="outlined"
+         ></v-autocomplete>
+        </v-col>
+        <v-col cols="5" class="pa-0">
+         <v-autocomplete
           v-model="destination"
           color="primary"
-          label="Destination"
           :items="villes"
-          required
-          placeholder=""
-        ></v-autocomplete>
-
-        <div class="d-flex justify-space-around align-center py-4">
-            <v-btn
-                variant="text"
-                :icon="mdiMinus"
-                @click="decrement"
-            ></v-btn>
-     
-            <v-text-field
-                v-model="nbrPassager"
-                color="primary"
-                label=""
-                required
-                placeholder=""
-                variant="flat"
-            ></v-text-field>
-        
-            <v-btn
-                variant="text"
-                :icon="mdiPlus"
-                @click="increment"
-            ></v-btn>
-        </div>
-
-        
-         <v-btn 
-            block
-            class="mb-8"
-            color="blue"
-            size="large"
-            variant=""
-            @click="onSearch"
+          placeholder="Destination"
+          variant="outlined"
+         ></v-autocomplete>
+        </v-col>
+        <v-col cols="2" class="pa-0">
+         <v-text-field
+          v-model="nbrPassager"
+          class="px-0"
+          variant="outlined"
          >
-            Rechercher
-         </v-btn>
-        
-    </form>
-</v-container>
+            <template v-slot:append-inner>
+            <v-icon 
+            :icon="mdiPlusCircleOutline" 
+            @click="increment"
+            >
+            </v-icon>
+            </template>
+            <template v-slot:prepend-inner>
+            <v-icon 
+            :icon="mdiMinusCircleOutline" 
+            @click="decrement">
+            </v-icon>
+            </template>
+         </v-text-field>
+        </v-col>
+      </v-row>
+      <v-card-actions>
+          <v-btn
+              class="mx-auto"
+              type="submit"
+              size="large"
+              color="blue"
+              variant="flat"
+              @click="onSearch"
+          >
+              Rechercher
+          </v-btn>
+      </v-card-actions>
+    </v-container>
 </template>
 <style scoped>
-.back{
-    background-image:-web;
-}
+
 </style>

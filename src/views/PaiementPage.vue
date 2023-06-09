@@ -1,13 +1,25 @@
 <script setup>
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {
   openKkiapayWidget,
-//   addKkiapayListener,
+   addKkiapayListener,
 //   removeKkiapayListener,
 } from "kkiapay";
+import axios from 'axios';
 
 let montant=ref('')
+let datePaiement=ref('')
 let numero=ref('')
+let transaction=ref({})
+let reservation_id=ref()
+
+const config= {
+  headers:{
+  Authorization:'Bearer ' + localStorage.getItem('token')
+  }
+}
+ 
+const url='http://localhost:8000/api/paiement'
 
 function  open() {
     openKkiapayWidget({
@@ -17,6 +29,30 @@ function  open() {
      phone: numero.value,
     })
 }
+
+function successHandler(response) {
+    console.log(response);
+}
+
+onMounted(()=>{
+    addKkiapayListener('success', successHandler)
+    axios
+    .post(url, {
+     "reservation_id": reservation_id.value,
+     "montant": montant.value,
+     "datePaiement": datePaiement.value,
+    }, config)
+    .then((response)=>{
+      console.log(response)
+      transaction.value=response.data
+    }
+    )
+    .catch(error=> {
+        console.log(error)
+    })
+})
+
+
 </script>
 <template>
     <v-container style="max-width: 500px;">

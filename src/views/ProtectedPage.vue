@@ -98,7 +98,7 @@ onMounted(()=>{
               <ProfilUtilisateur></ProfilUtilisateur>
             </template>
             <div class="d-flex  w-100">
-              <h1 class="up">Welcome on Go<span class="blue">Car</span></h1>
+              <h1 class="up">Bienvenue sur Go<span class="blue">Car</span></h1>
             </div>
           </v-app-bar>
     <v-navigation-drawer v-model="drawer" color="grey-ligthen-2" permanent

@@ -54,121 +54,132 @@ function submit(){
  
 </script>
 
-<template class="layout">
-    <v-layout > 
-      <v-main style="min-height: 550px;">
-        <v-app-bar color="blue" class="justify-center">
+<template>
+    <v-layout> 
+      <v-main> 
+        <v-app-bar color="cyan-lighten-5" class="justify-center">
           <div class="d-flex justify-center align-center w-100">
             <h1>Publier un trajet</h1>
           </div>
-        </v-app-bar>
-
-        <v-card
-          class="mx-auto  pa-8 pb-6"
-          elevation="8"
-          max-width="500"
-        >
-          <form>
-                <v-text-field
-                  v-model="depart"
-                  label=""
-                  placeholder="Lieu de départ"
-                ></v-text-field>
-
-                <v-text-field
-                  v-model="destination"
-                  label=""
-                  placeholder="Destination"
-                ></v-text-field>
-
-                <v-text-field
-                  v-model="dateTrajet"
-                  label="Date du Trajet"
-                  placeholder="ex: aaaa:mm:jj"
-                ></v-text-field>
-
-                <v-text-field
-                  v-model="heureDepart"
-                  label="Heure de départ"
-                  placeholder="ex: 14:00"
-                ></v-text-field>
-
-                <v-text-field
-                  v-model="nbrPassager"
-                  label=""
-                  placeholder="Nombre de passager"
-                ></v-text-field>
-   
-                <v-text-field
-                  v-model="prix"
-                  label=""
-                  placeholder="Prix par place"
-                ></v-text-field>
-
-                  <v-select
-                    v-model="conditions"
-                    :items="items"
-                    label="Others"
-                    placeholder="ex: Cigarette autorisée"
-                  ></v-select>
-
-                  <v-text-field
-                    v-model="numPermis"
-                    :counter="10"
-                    label=""
-                    placeholder="N°Permis de Conduire"
-                  ></v-text-field>
-
-                  <v-text-field
-                    v-model="immatriculation"
-                    :counter="7"
-                    label=""
-                    placeholder="Immatriculation du véhicule"
-                  ></v-text-field>
-
-                  <v-file-input
-                    v-model="photoPermis"
-                    placeholder="Upload your documents"
-                    label="Photo du Permis"
-                    multiple
-                    :prepend-icon="mdiPaperclip"
-                  >
-                    <template v-slot:selection="{ fileNames }">
-                      <template v-for="fileName in fileNames" :key="fileName">
-                        <v-chip
-                          size="small"
-                          label
-                          color="primary"
-                          class="me-2"
-                        >
-                          {{ fileName }}
-                        </v-chip>
-                      </template>
-                    </template>
-                  </v-file-input>
-                </form>
-
-          <v-divider></v-divider>
-
-          <v-card-actions>
-            <v-btn
-              class="mx-auto"
-              color="success"
-              size="large"
-              variant="flat"
-              type="submit"
-              @click="submit"
+        </v-app-bar> 
+        <v-container>
+          <form> 
+         <v-row>
+          <v-col cols="4">
+            <v-text-field
+              v-model="depart"
+              label=""
+              placeholder="Lieu de départ"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="4">
+            <v-text-field
+              v-model="destination"
+              label=""
+              placeholder="Destination"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="4">
+            <v-text-field
+              v-model="dateTrajet"
+              label="Date du Trajet"
+              placeholder="ex: aaaa:mm:jj"
+            ></v-text-field>
+          </v-col>
+         </v-row>
+          <v-text-field
+            v-model="heureDepart"
+            label="Heure de départ"
+            placeholder="ex: 14:00"
+          ></v-text-field>
+         <v-row>
+          <v-col cols="6">
+            <v-text-field
+              v-model="nbrPassager"
+              label=""
+              placeholder="Nombre de passager"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="6">
+            <v-text-field
+              v-model="prix"
+              label=""
+              placeholder="Prix par place"
+            ></v-text-field>
+          </v-col>
+         </v-row>
+         <v-row>
+          <v-col cols="8">
+            <v-select
+              v-model="conditions"
+              :items="items"
+              label="Others"
+              placeholder="ex: Cigarette autorisée"
+            ></v-select>
+          </v-col>
+          <v-col cols="4">
+            <v-text-field
+              v-model="immatriculation"
+              :counter="7"
+              label=""
+              placeholder="Immatriculation du véhicule"
+            ></v-text-field>
+          </v-col>
+         </v-row>
+         <v-row>
+          <v-col cols="6">
+            <v-text-field
+              v-model="numPermis"
+              :counter="10"
+              label=""
+              placeholder="N°Permis de Conduire"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="6">
+            <v-file-input
+              v-model="photoPermis"
+              placeholder="Upload your documents"
+              label="Photo du Permis"
+              multiple
+              :prepend-icon="mdiPaperclip"
             >
-              Publier
-            </v-btn>
+              <template v-slot:selection="{ fileNames }">
+                <template v-for="fileName in fileNames" :key="fileName">
+                  <v-chip
+                    size="small"
+                    label
+                    color="primary"
+                    class="me-2"
+                  >
+                    {{ fileName }}
+                  </v-chip>
+                </template>
+              </template>
+            </v-file-input>
+          </v-col>
+         </v-row>
+        </form>
+         <v-divider></v-divider>
+          <v-card-actions>
+          <v-btn
+            class="mx-auto"
+            color="success"
+            size="large"
+            variant="flat"
+            type="submit"
+            @click="submit"
+          >
+            Publier
+          </v-btn>
           </v-card-actions>
-        </v-card>
+        </v-container>
+      
       </v-main>
     </v-layout>
 </template>
 
 <style scoped>
-.layout{
-  background-color:rgb(33, 51, 58);
-}
+/* .layout{
+  background-color: rgb(232, 245, 245);
+} */
 </style>

@@ -26,6 +26,7 @@ onMounted(()=>{
   console.log(error)
  })
 })
+
 </script>
 
 <template>

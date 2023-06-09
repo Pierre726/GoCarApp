@@ -5,7 +5,7 @@ import axios from 'axios'
 import {useRouter} from 'vue-router'
 import { mdiEmailOutline, mdiLockOutline, mdiEyeOff, mdiEye } from '@mdi/js'
 
-let router = useRouter() 
+let router=useRouter() 
 let email=ref('')
 let password=ref('')
 let visible=ref(false)
@@ -33,7 +33,7 @@ async function submit(){
       <div>
         <v-row>
           <v-col cols="7">
-            <p class="text-body-1">Une solution idéale pour vos déplacements. Non seulement vous faites des économies mais vous gagnez également en temps.</p>
+            <p class="text-body-1 font-bold text-black">Une solution idéale pour vos déplacements. Non seulement vous faites des économies mais vous gagnez également en temps.</p>
             <v-img
               class="mx-auto"
               max-width="500"
@@ -42,16 +42,16 @@ async function submit(){
           </v-col>
           <v-col cols="5">
             <v-card
-              class="pa-12 pb-8"
+              class="pa-8 pb-8"
               elevation="8"
               max-width="448"
               rounded="lg"
             >
             <div class="d-flex justify-center align-center w-100">
-              <h2 class="text-h6 text-lg-h5 text-teal">Log into GoCar</h2>
+              <h2 class="text-h6 text-lg-h5 text-teal">Se connecter sur GoCar</h2>
             </div>
           
-              <div class="text-subtitle-1 text-medium-emphasis">Account</div>
+              <div class="text-subtitle-1 text-medium-emphasis">Email</div>
           
               <v-text-field
                 v-model="email"
@@ -62,13 +62,13 @@ async function submit(){
               ></v-text-field>
           
               <div class="text-subtitle-1 text-medium-emphasis d-flex align-center justify-space-between">
-                Password
+                Mot de passe
           
                 <RouterLink to="/change-password"
                   class="text-caption text-decoration-none text-blue"
                   rel="noopener noreferrer"
                 >
-                  Forgot login password?</RouterLink>
+                  Mot de passe oublié?</RouterLink>
               </div>
           
               <v-text-field
@@ -97,18 +97,19 @@ async function submit(){
                 color="blue"
                 size="large"
                 variant="tonal"
-               @click="submit">
-                Log In
+               @click="submit"
+              >
+                Se connecter
               </v-btn>
               
           
               <v-card-text class="text-center">
-                <RouterLink to="/sign-up" 
+                <p>Je n'ai pas de compte<RouterLink to="/sign-up" 
                 class="text-blue text-decoration-none"
                 rel="noopener noreferrer"
                 >
-                  Sign up now 
-              </RouterLink>
+                  ?S'inscrit 
+              </RouterLink></p>
               </v-card-text>
             </v-card>
           </v-col>
