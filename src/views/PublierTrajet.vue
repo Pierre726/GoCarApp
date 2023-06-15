@@ -62,8 +62,8 @@ function submit(){
             <h1>Publier un trajet</h1>
           </div>
         </v-app-bar> 
-        <v-container>
-          <form> 
+        <v-container >
+        <form> 
          <v-row>
           <v-col cols="4">
             <v-text-field
@@ -179,7 +179,7 @@ function submit(){
 </template>
 
 <style scoped>
-/* .layout{
-  background-color: rgb(232, 245, 245);
-} */
+/* *{
+    background-image: url("@/assets/main.jpg");
+  } */
 </style>

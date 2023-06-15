@@ -41,12 +41,12 @@ const router = createRouter({
       component: () => import('../views/RecherchePage.vue')
     },
     {
-      path: '/reservation',
+      path: '/reservation/trajet/:trajetId',
       name: 'reservation',
       component: () => import('../views/ReservationPage.vue')
     },
     {
-      path: '/paiement',
+      path: '/reservation/trajet/paiement/:id/:montant',
       name: 'paiement',
       component: () => import('../views/PaiementPage.vue')
     }

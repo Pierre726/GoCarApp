@@ -7,6 +7,7 @@ import axios from 'axios'
 import {RouterLink} from 'vue-router'
 
 let trajets=ref({})
+// let id=ref()
 //let router=useRouter()
 const config= {
     headers:{
@@ -21,6 +22,7 @@ onMounted(()=>{
   .then((response)=>{
     console.log(response)
     trajets.value=response.data
+    
   })
   .catch(error=> {
   console.log(error)
@@ -51,7 +53,7 @@ onMounted(()=>{
         <div>
           <strong>{{ trajet.depart }}</strong>
           <div class="text-caption">
-            Carrefour arconville
+            Carrefour 
           </div>
         </div>
       </div>
@@ -103,20 +105,11 @@ onMounted(()=>{
       <div class="d-flex pt-6 pb-6">
         <h2 class="me-16">Prix par passager:</h2>
       <div>
-        <h2>{{ trajet.prix}}$</h2>
+        <h2>{{ trajet.prix}} FCFA</h2>
       </div>
       </div>
     <v-divider></v-divider>
 
-    <div class="d-flex pt-6 pb-6">
-        <h2 class="me-16">Numéro du trajet:</h2>
-      <div>
-        <h2 class="font-weight-bold">{{ trajet.id}}</h2>
-      </div>
-      </div>
-
-    <v-spacer></v-spacer>
-    
     <div class="d-flex pt-6 pb-6">
       <h2>{{ trajet.conditions }}</h2>
     </div>
@@ -124,11 +117,11 @@ onMounted(()=>{
     <div class="d-flex pt-6 pb-6">
       <RouterLink to=""><h2>Contacter le conducteur</h2></RouterLink>
     </div>
-        <RouterLink to="/reservation"><v-btn 
+        <RouterLink :to="{ name: 'reservation', params: { trajetId: trajet.id }}"><v-btn 
         type="submit"
         size="large"
-        class="mb-4"
-        color="success"
+        class="mb-4" 
+        color="success" 
         >
           Réserver sur ce trajet
         </v-btn></RouterLink>

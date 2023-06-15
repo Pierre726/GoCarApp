@@ -302,5 +302,6 @@
   .bigdiv{
     margin: 0 35%;
   }
+  
 </style>
 
