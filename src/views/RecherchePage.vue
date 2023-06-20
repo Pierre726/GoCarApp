@@ -68,7 +68,7 @@ onMounted(()=>{
         <div>
           <strong>{{ trajet.destination }}</strong>
           <div class="text-caption mb-2">
-            Carrefour tokpa
+            Carrefour 
           </div>
         </div>
       </div>
@@ -114,17 +114,40 @@ onMounted(()=>{
       <h2>{{ trajet.conditions }}</h2>
     </div>
     
-    <div class="d-flex pt-6 pb-6">
-      <RouterLink to=""><h2>Contacter le conducteur</h2></RouterLink>
-    </div>
-        <RouterLink :to="{ name: 'reservation', params: { trajetId: trajet.id }}"><v-btn 
-        type="submit"
-        size="large"
-        class="mb-4" 
-        color="success" 
+    <v-row> 
+      <v-col cols="12" md="6">
+        <RouterLink :to="{ name: 'message', params: { user_id: trajet.user_id }}"
         >
-          Réserver sur ce trajet
-        </v-btn></RouterLink>
+         <v-btn
+          color="teal"
+         >
+          Contacté le chauffeur
+         </v-btn>
+        </RouterLink>
+      </v-col>
+      <v-col cols="12" md="6">
+        <RouterLink :to="{ name: 'reservation', params: { trajetId: trajet.id }}"
+        >
+          <v-btn 
+           color="teal" 
+          >
+           Réserver sur ce trajet
+          </v-btn>
+        </RouterLink>
+      </v-col>
+      <!-- <v-col cols="12" md="4">
+        <RouterLink to="/leaflet-maps"
+        >
+          <v-btn 
+           color="teal" 
+          >
+           Localisation
+          </v-btn>
+        </RouterLink>
+      </v-col> -->
+    </v-row>
+    
+        
   </v-card>
   </v-container>
 </template>

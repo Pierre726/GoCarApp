@@ -54,13 +54,6 @@ function reserver(){
   <v-container style="max-width: 500px;"> 
     <h1 class="text-center text-h4 pb-4">Réservation et Paiement</h1>
     <form>
-      <!-- <h2>Veuillez entrer le numéro du trajet</h2>
-      <v-text-field
-        v-model="trajet_id"
-        variant="solo"
-      >
-      {{ $route.params.trajetId }}
-      </v-text-field> -->
       <h2>Date de la réservation</h2>
       <v-text-field
         v-model="dateReservation"

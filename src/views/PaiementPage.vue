@@ -69,7 +69,7 @@ function getReservation(){
       datePaiement.value=reservation.value
     }
   )
-}
+} 
 </script>
 <template>
     <v-container style="max-width: 500px;">

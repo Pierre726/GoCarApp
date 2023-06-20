@@ -31,6 +31,16 @@ const router = createRouter({
       component: () => import('../views/PublierTrajet.vue')
     },
     {
+      path: '/success',
+      name: 'publication',
+      component: () => import('../views/AfterPublish.vue')
+    },
+    {
+      path: '/mes-trajets',
+      name: 'trajets',
+      component: () => import('../views/MesTrajets.vue')
+    },
+    {
       path: '/search-trajet',
       name: 'searchTrajet',
       component: () => import('../views/SearchTrajet.vue')
@@ -41,9 +51,19 @@ const router = createRouter({
       component: () => import('../views/RecherchePage.vue')
     },
     {
+      path: '/openChat/:user_id',
+      name: 'message',
+      component: () => import('../views/MessagePage.vue')
+    },
+    {
       path: '/reservation/trajet/:trajetId',
       name: 'reservation',
       component: () => import('../views/ReservationPage.vue')
+    },
+    {
+      path: '/leaflet-maps',
+      name: 'leaflet-maps',
+      component: () => import('../views/LeafletMapPage.vue')
     },
     {
       path: '/reservation/trajet/paiement/:id/:montant',

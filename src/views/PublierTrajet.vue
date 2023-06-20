@@ -1,9 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-// import {useRouter} from 'vue-router'
+import {useRouter} from 'vue-router'
 
-// let router = useRouter()
+let router = useRouter()
 let numPermis = ref()
 let immatriculation = ref('')
 let conditions = ref('')
@@ -13,7 +13,7 @@ let items = ref([
   'Climatisation',
   "Nombre de place à l'arrière",
 ])
-
+// let form=ref('')
 let photoPermis=ref([])
 let depart= ref('')
 let destination=ref('')
@@ -45,12 +45,17 @@ function submit(){
   }, config) 
   .then((response)=>{
       console.log(response)
+      if(response.status==200){
+        router.push({path:'/success'})
+      }
     }
   )
   .catch(error=> {
     console.log(error)
   })
+  
 }
+
  
 </script>
 
@@ -63,7 +68,7 @@ function submit(){
           </div>
         </v-app-bar> 
         <v-container >
-        <form> 
+        <!-- <v-form v-model="form">  -->
          <v-row>
           <v-col cols="4">
             <v-text-field
@@ -158,7 +163,7 @@ function submit(){
             </v-file-input>
           </v-col>
          </v-row>
-        </form>
+
          <v-divider></v-divider>
           <v-card-actions>
           <v-btn
@@ -172,6 +177,8 @@ function submit(){
             Publier
           </v-btn>
           </v-card-actions>
+        <!-- </v-form> -->
+         
         </v-container>
       
       </v-main>
@@ -181,5 +188,5 @@ function submit(){
 <style scoped>
 /* *{
     background-image: url("@/assets/main.jpg");
-  } */
+  } */ 
 </style>
