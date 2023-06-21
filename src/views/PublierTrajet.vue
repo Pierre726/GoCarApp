@@ -8,7 +8,6 @@ let numPermis = ref()
 let immatriculation = ref('')
 let conditions = ref('')
 let items = ref([
-  'Cigarette',
   'Animaux de compagnie',
   'Climatisation',
   "Nombre de place à l'arrière",
@@ -46,7 +45,7 @@ function submit(){
   .then((response)=>{
       console.log(response)
       if(response.status==200){
-        router.push({path:'/success'})
+        router.push({name:'publication', params: {user_id: response.data.trajet.user_id}})
       }
     }
   )

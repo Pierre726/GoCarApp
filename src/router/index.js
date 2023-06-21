@@ -31,12 +31,12 @@ const router = createRouter({
       component: () => import('../views/PublierTrajet.vue')
     },
     {
-      path: '/success',
+      path: '/success/:user_id',
       name: 'publication',
       component: () => import('../views/AfterPublish.vue')
     },
     {
-      path: '/mes-trajets',
+      path: '/mes-trajets/:user_id',
       name: 'trajets',
       component: () => import('../views/MesTrajets.vue')
     },

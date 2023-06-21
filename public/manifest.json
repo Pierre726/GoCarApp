@@ -1,0 +1,17 @@
+{
+    "name":"GoCar APP",
+    "short_name":"GCar",
+    "description":"Progressive web application to create standardized invoices",
+    "theme_color":"#283f66",
+    "background_color":"#fff",
+    "icons":[
+        {
+
+        },
+        {
+
+        }
+    ],
+    "start_url":"/?source=pwa",
+    "display":"standalone"
+}
