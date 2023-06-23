@@ -55,7 +55,6 @@ function submit(){
   
 }
 
- 
 </script>
 
 <template>
@@ -117,8 +116,7 @@ function submit(){
             <v-select
               v-model="conditions"
               :items="items"
-              label="Others"
-              placeholder="ex: Cigarette autorisée"
+              label="Autres conditions"
             ></v-select>
           </v-col>
           <v-col cols="4">

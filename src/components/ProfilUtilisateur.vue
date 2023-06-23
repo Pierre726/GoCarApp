@@ -1,5 +1,5 @@
 <script setup>
-import {mdiAccount, mdiCash, mdiLogoutVariant, mdiWidgets, mdiBellOutline, mdiAccountOutline, mdiMessageText} from '@mdi/js'
+import {mdiAccount, mdiCash, mdiLogoutVariant, mdiBellOutline, mdiAccountOutline, mdiMessageText} from '@mdi/js'
 </script>
 
 <template>
@@ -34,7 +34,7 @@ import {mdiAccount, mdiCash, mdiLogoutVariant, mdiWidgets, mdiBellOutline, mdiAc
                 rounded
                 variant="text"
               >
-                Vos trajets
+                Mes trajets
               </v-btn>
               <v-divider></v-divider>
               <v-btn
@@ -45,28 +45,20 @@ import {mdiAccount, mdiCash, mdiLogoutVariant, mdiWidgets, mdiBellOutline, mdiAc
                Messages
               </v-btn>
               <v-divider ></v-divider>
-              <v-btn
+              <a href="/mon-profil"><v-btn
                 :prepend-icon="mdiAccountOutline"
                 rounded
                 variant="text"
               >
                Profil
-              </v-btn>
+              </v-btn></a>
               <v-divider ></v-divider>
               <v-btn
                 :prepend-icon="mdiCash"
                 rounded
                 variant="text"
               >
-               Virements
-              </v-btn>
-              <v-divider ></v-divider>
-              <v-btn
-                :prepend-icon="mdiWidgets"
-                rounded
-                variant="text"
-              >
-               Paiements et remboursements
+               Mes historiques de transactions
               </v-btn>
               <v-divider ></v-divider>
               <v-btn

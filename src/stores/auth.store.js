@@ -9,7 +9,7 @@ export const useMeStore=defineStore('me', ()=>{
         error:null
     })
 
-    function me(){
+    async function me(){
         user.isLoading=true
         const config={
             headers:{
@@ -18,7 +18,7 @@ export const useMeStore=defineStore('me', ()=>{
         };
         const url="http://localhost:8000/api/me";
 
-        axios
+       await axios
         .get(url, config)
         .then(response=>{
             user.data=response.data

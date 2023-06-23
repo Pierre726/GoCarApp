@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref} from 'vue'
 import axios from 'axios'
+import {useMeStore} from '../stores/auth.store'
 import {useRoute} from 'vue-router'
 import {
     mdiSend, 
@@ -8,14 +9,15 @@ import {
     mdiMagnify, mdiDotsVertical, mdiCamera} from '@mdi/js'
 
 let receiver=ref()
+const auth= useMeStore()
+let messags=ref([])
 let user=ref()
 let conversation_id=ref()
 let conversationId=ref()
 let messag=ref('')
 let messages=ref([
     {
-        avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
-        
+      avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
     }
 ])
 
@@ -33,6 +35,8 @@ const config= {
 receiver.value=route.params.user_id
 
 onMounted(()=>{
+  auth.me()
+  console.log(auth.user)
     getUser()
     buildChat()
 })
@@ -71,23 +75,35 @@ function  sendMessage(){
     "message": messag.value,
   },config)
   .then((reponse)=>{
-    console.log(reponse)
+    console.log(reponse.data)
+    messags.value=reponse.data.messages
   }
   )
   .catch(error=> {
     console.log(error)
   })
   clearMessage()
+  addMessage()
+}
+
+function addMessage(messag){
+  messags.value.push({ messag })
 }
 
 function  clearMessage () {
     messag.value = ''
 }
 
+// window.Echo.private('chatRoom')
+//     .listen('MessageSent', (e) => {
+//       console.log(e);
+//     });
+
 </script>
 
 <template>
-    <div>
+  <center class="ma-16 mb-16" v-if="auth.user.isLoading"><v-progress-circular indeterminate :size="67" :width="6" ></v-progress-circular></center>
+    <div v-else>
     <v-card
       v-for="(message, i) in messages"
       :key="i"
@@ -134,8 +150,13 @@ function  clearMessage () {
             <v-btn icon>
              <v-icon :icon="mdiDotsVertical"/>
             </v-btn>
-
         </v-toolbar> 
+
+        <br><br>
+
+        <v-chip>
+          {{ messags.message }}
+        </v-chip>
         
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

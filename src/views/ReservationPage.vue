@@ -10,6 +10,7 @@ let dateReservation=ref('')
 let router=useRouter()
 let trajet=ref({})
 
+
 const config= {
   headers:{
     Authorization:'Bearer ' + localStorage.getItem('token')
@@ -46,6 +47,7 @@ function reserver(){
   )
   .catch(error=> {
     console.log(error)
+    router.push({path:'/reservation/error'})
   })
 }
 </script>

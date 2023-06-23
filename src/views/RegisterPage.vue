@@ -76,7 +76,7 @@
     class="mx-n16 pa-8 pb-6"
     elevation="8"
     style="max-width: 500px;"
-    title="Create account"
+    title="Inscription"
     >
     <form>
       <div>
@@ -84,7 +84,7 @@
           v-model="name"
           :rules="[rules.names]"
           color="primary"
-          label="Name"
+          label="Nom"
         ></v-text-field>
 
         <v-text-field
@@ -97,13 +97,13 @@
         <v-text-field
           v-model="adress"
           color="primary"
-          label="Adress"
+          label="Adresse"
         ></v-text-field>
 
         <v-text-field
           v-model="code_postal"
           :rules="[() => !!code_postal || 'This field is required']"
-          label="ZIP / Postal Code"
+          label="ZIP /Code Postal"
           required
           placeholder="00229"
         ></v-text-field>
@@ -121,7 +121,7 @@
           v-model="country"
           :rules="[() => !!country || 'This field is required']"
           :items="countries"
-          label="Country"
+          label="Pays"
           required
         ></v-autocomplete>
 
@@ -131,7 +131,7 @@
           :rules="[rules.password, rules.length(8)]"
           :type="show1 ? 'text' : 'password'"
           name="input-10-1"
-          label="Password"
+          label="Mot de passe"
           counter
           @click:append-inner="show1 = !show1"
         ></v-text-field>
@@ -290,7 +290,7 @@
       variant=""
       @click="onSubmit"
       >
-        Submit
+        S'inscrit
       </v-btn>
     </v-card-actions>
     </v-card>

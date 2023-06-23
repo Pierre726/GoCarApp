@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted, ref} from 'vue'
-import {useRoute} from 'vue-router'
+import {useRoute, RouterLink} from 'vue-router'
+import {mdiClose} from '@mdi/js'
 import {
   openKkiapayWidget,
    addKkiapayListener,
@@ -72,16 +73,22 @@ function getReservation(){
 } 
 </script>
 <template>
-    <v-container style="max-width: 500px;">
-        <h2 class="text-center">Numéro mobile money</h2>
-        <v-text-field
-        v-model="numero"
-        required
-        variant="solo"
-        >
-        </v-text-field>
+  <v-container style="max-width: 500px;">
+    <RouterLink to="/protected-page">
+      <v-icon :icon="mdiClose" size="36px"/>
+    </RouterLink> 
+    
+     <br><br><br>
+
+    <h2 class="text-center">Numéro mobile money</h2>
+      <v-text-field
+       v-model="numero"
+       required
+       variant="solo"
+      >
+      </v-text-field>
      <v-btn class="d-flex justify-center align-center w-100" type="submit" color="primary" @click="open">Continuer</v-btn>
-    </v-container>
+  </v-container>
 </template>
 <style scoped>
 </style>

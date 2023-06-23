@@ -122,7 +122,9 @@ onMounted(()=>{
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <h1>Un moment d'échange et de rencontre pour tous.</h1>  
+                  <p class="text-h4 text-center">Opportunités</p>
+                  <h2>Le covoiturage vous offre la possibilité de réaliser des économies. En optant pour le covoiturage, vous pouvez réduire considérablement vos frais de carburant si vous êtes conducteur, et vos frais de transport si vous êtes passager. En plus des économies, le covoiturage favorise les échanges et les rencontres entre les personnes. C'est une opportunité de créer des liens et de partager des moments conviviaux.</h2>  
+                <v-btn color=green class="ma-3">Publier maintenant</v-btn>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-carousel

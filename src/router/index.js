@@ -69,6 +69,16 @@ const router = createRouter({
       path: '/reservation/trajet/paiement/:id/:montant',
       name: 'paiement',
       component: () => import('../views/PaiementPage.vue')
+    },
+    {
+      path: '/reservation/error',
+      name: 'erreur',
+      component: () => import('../views/ErreurReservation.vue')
+    },
+    {
+      path: '/mon-profil',
+      name: 'profil',
+      component: () => import('../views/MonProfil.vue')
     }
   ]
 })
