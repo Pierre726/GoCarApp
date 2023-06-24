@@ -5,6 +5,9 @@ import "./lib/pusher.js"
 import App from './App.vue'
 import router from './router'
 
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
+
 import './assets/main.css'
 
 // Vuetify
@@ -32,6 +35,10 @@ const vuetify = createVuetify({
 })
 
 const app = createApp(App)
+
+app.use(VCalendar, {})
+
+app.config.devtools=true
 
 app.use(createPinia())
 app.use(router)

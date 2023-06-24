@@ -2,7 +2,7 @@
   import {ref} from 'vue'
   import axios from 'axios'
   import {useRouter} from 'vue-router'
-  import {mdiPaperclip, mdiEye, mdiEyeOff} from '@mdi/js'
+  import {mdiPaperclip, mdiEye, mdiEyeOff, mdiCalendar} from '@mdi/js'
 
   let name=ref("")
   let telephone=ref()
@@ -148,23 +148,33 @@
           placeholder="99973840"
         ></v-text-field>
 
-        <v-text-field
-          v-model="date_emission_permis"
-          :rules="[() => !!date_emission_permis || 'This field is required']"
-          color="primary"
-          label="Date d'émission du permis"
-          required
-          placeholder="aaaa:mm:jj"
-        ></v-text-field>
+        <V-date-picker v-model.string="date_emission_permis" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date d'Emission du permis'"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
 
-        <v-text-field
-          v-model="date_expiration_permis"
-          :rules="[() => !!date_expiration_permis || 'This field is required']"
-          color="primary"
-          label="Date d'expiration du permis"
-          required
-          placeholder="aaaa:mm:jj"
-        ></v-text-field>
+            <V-date-picker v-model.string="date_expiration_permis" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date d'expiration du permis'"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
 
         <v-text-field
           v-model="annee_experience_conducteur"
@@ -226,23 +236,33 @@
           placeholder="99973840"
         ></v-text-field>
 
-        <v-text-field
-          v-model="date_emission_identite"
-          :rules="[() => !!date_emission_identite || 'This field is required']"
-          color="primary"
-          label="Date d'émission de la pièce"
-          required
-          placeholder="aaaa:mm:jj"
-        ></v-text-field>
+        <V-date-picker v-model.string="date_emission_identite" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date d'émission de la pièce'"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
 
-        <v-text-field
-          v-model="date_expiration_identite"
-          :rules="[() => !!date_expiration_identite || 'This field is required']"
-          color="primary"
-          label="Date d'expiration de la pièce"
-          required
-          placeholder="aaaa:mm:jj"
-        ></v-text-field>
+            <V-date-picker v-model.string="date_expiration_identite" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date d'expiration de la pièce'"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
 
 
         <v-file-input

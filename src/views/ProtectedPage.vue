@@ -115,16 +115,13 @@ onMounted(()=>{
       <ButtonBottom></ButtonBottom>
      </template>
     </v-navigation-drawer>
-    <v-container>
-      <v-row>
         <v-main>
-          <div> 
             <v-container>
               <v-row>
                 <v-col cols="12" md="6">
-                  <p class="text-h4 text-center">Opportunités</p>
-                  <h2>Le covoiturage vous offre la possibilité de réaliser des économies. En optant pour le covoiturage, vous pouvez réduire considérablement vos frais de carburant si vous êtes conducteur, et vos frais de transport si vous êtes passager. En plus des économies, le covoiturage favorise les échanges et les rencontres entre les personnes. C'est une opportunité de créer des liens et de partager des moments conviviaux.</h2>  
-                <v-btn color=green class="ma-3">Publier maintenant</v-btn>
+                  <p class="text-h3">Opportunités</p>
+                  <h2>Le covoiturage permet des économies sur carburant et transport, encourage les échanges et rencontres, favorisant ainsi les liens sociaux et moments conviviaux.</h2>  
+                <a href="/publier-trajet"><v-btn color=green class="ma-3">Publier maintenant</v-btn></a>
                 </v-col>
                 <v-col cols="12" md="6">
                   <v-carousel
@@ -156,17 +153,17 @@ onMounted(()=>{
               </v-row>
             </v-container>
               
-              <h1>Découvrez et obtez pour <strong>GoCar</strong>.</h1> 
+              <h1 class="px-4">Découvrez et obtez pour <strong>GoCar</strong>.</h1> 
                 <div class="image">
                   <img src="https://cdn.blablacar.com/kairos/assets/images/carpool_blablabus_small-aacb46bde375e3196927..svg"/>
                 </div>
             
-              <h1>Un vaste choix de trajets à petits prix</h1>
+              <h1 class="px-4">Un vaste choix de trajets à petits prix</h1>
             <section class="section">
               <div class="sectionDiv">
                 <article>
-                  <h2 class="presentation">Où allez-vous?</h2>
-                      <v-chip-group class="pa-9">
+                  <h2 class="presentation text-h4">Où allez-vous?</h2>
+                      <v-chip-group class="pb-16">
                         <v-chip class="py-8">Calavi --> Cotonou</v-chip>
                         <v-chip class="py-8">Calavi --> Lomé</v-chip>
                         <v-chip class="py-8">Cotonou --> Parakou</v-chip>
@@ -177,13 +174,11 @@ onMounted(()=>{
                 </article>
               </div>
             </section>
-          </div>
-        </v-main>
-      </v-row>
-      <v-row>
+          
+      <div>
         <TheFooter></TheFooter>
-      </v-row>
-    </v-container>
+      </div>
+    </v-main>
   </v-layout>
 </template>
 

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useRoute, 
  useRouter 
 } from 'vue-router'
+import { mdiCalendar } from '@mdi/js';
 
 let trajetId=ref('')
 let dateReservation=ref('')
@@ -57,12 +58,19 @@ function reserver(){
     <h1 class="text-center text-h4 pb-4">Réservation et Paiement</h1>
     <form>
       <h2>Date de la réservation</h2>
-      <v-text-field
-        v-model="dateReservation"
-        label=""
-        placeholder="ex: AAAA:MM:JJ"
-        variant="solo"
-      ></v-text-field>
+      <V-date-picker v-model.string="dateReservation" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date de réservation"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
      <v-btn @click="reserver" color="success">Réserver</v-btn>
     </form>
   </v-container>

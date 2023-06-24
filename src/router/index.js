@@ -79,7 +79,12 @@ const router = createRouter({
       path: '/mon-profil',
       name: 'profil',
       component: () => import('../views/MonProfil.vue')
-    }
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: () => import('../views/ContactPage.vue')
+    },
   ]
 })
 

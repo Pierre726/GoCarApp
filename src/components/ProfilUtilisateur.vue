@@ -1,5 +1,25 @@
 <script setup>
 import {mdiAccount, mdiCash, mdiLogoutVariant, mdiBellOutline, mdiAccountOutline, mdiMessageText} from '@mdi/js'
+import {ref} from 'vue'
+import {useRouter, RouterLink} from 'vue-router'
+
+let router=useRouter()
+
+let logout=ref(false)
+
+function logOut(){
+  const config= {
+    headers:{
+    Authorization:'Bearer ' + localStorage.removeItem('token')
+    }
+  }
+
+  if (logout.value === true){
+    return config,
+
+    router.push({path:'/login'})
+  }
+}
 </script>
 
 <template>
@@ -37,13 +57,13 @@ import {mdiAccount, mdiCash, mdiLogoutVariant, mdiBellOutline, mdiAccountOutline
                 Mes trajets
               </v-btn>
               <v-divider></v-divider>
-              <v-btn
+              <a href="/contacts"><v-btn
                 :prepend-icon="mdiMessageText"
                 rounded
                 variant="text"
               >
-               Messages
-              </v-btn>
+               Contactez-nous
+              </v-btn></a>
               <v-divider ></v-divider>
               <a href="/mon-profil"><v-btn
                 :prepend-icon="mdiAccountOutline"
@@ -69,13 +89,14 @@ import {mdiAccount, mdiCash, mdiLogoutVariant, mdiBellOutline, mdiAccountOutline
                Notifications
               </v-btn>
               <v-divider class=""></v-divider>
-              <v-btn
+              <RouterLink to="/login"><v-btn
                 :prepend-icon="mdiLogoutVariant"
                 rounded
                 variant="text"
+                @click="logOut"
               >
                Déconnexion
-              </v-btn>
+              </v-btn></RouterLink>
             </div>
           </v-card-text>
         </v-card>

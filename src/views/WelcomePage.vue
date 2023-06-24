@@ -1,27 +1,31 @@
 <script setup>
 import {RouterLink} from 'vue-router'
 import {ref} from 'vue'
-import {mdiAccount, mdiMagnify, mdiPlusCircle} from '@mdi/js'
+import {mdiAccount, mdiMagnify, mdiPlusCircle, mdiMapMarker, mdiEmail, mdiPhone, mdiWhatsapp} from '@mdi/js'
+import {mdiFacebook, mdiTwitter, mdiLinkedin, mdiInstagram} from '@mdi/js'
 
-
+let  links=ref([
+  'Acceuil',
+  'Team',
+  'Services',
+])
 let items= ref([
   { title: 'Qui sommes-nous?' },
   { title: 'Contacts' },
-  { title: "Centre d'aide" },
-  { title: 'Réseaux sociaux'},
+  { title: "Comment sa marche" },
 ])
 
 let items2= [
   {
-    text: `It's New Release Friday`,
+    text: `Un bon temps pour covoiturer`,
     img: 'https://www.jeuneafrique.com/cdn-cgi/image/q=100,f=auto,metadata=none,width=1256,height=628/https://www.jeuneafrique.com/medias/2020/10/22/45994hr_.jpg',
   },
   {
-    text: 'Waoh!!!',
+    text: 'Réduction du CO2 grace à vous',
     img: 'https://ortb.bj/storage/2021/02/houeyiho.jpg',
   },
   {
-    text: 'Un agréable voyage',
+    text: 'Poste ou recherche, clique et réserve',
     img: 'https://cdn.pixabay.com/photo/2016/11/23/17/24/woman-1853936_1280.jpg',
   },
 ]
@@ -29,9 +33,9 @@ let items2= [
 </script>
 
 <template>
+  <v-layout> 
   <div class="header">
-    <v-card max-width="1000" class="mx-auto">
-      <v-layout>
+    
         <v-app-bar
           density="prominent"
           height="50"
@@ -151,15 +155,12 @@ let items2= [
                 </v-menu>
               </v-row>
             </v-container>
-
           </template>
         </v-app-bar>
-      </v-layout>
-    </v-card>
   </div>
-  
+  <v-main> 
   <div class="image">
-   <img src="https://cdn.blablacar.com/kairos/assets/images/carpool_blablabus_small-aacb46bde375e3196927..svg"/>
+   <img src="https://img.freepik.com/vecteurs-premium/logo-location-voiture-modele-vectoriel-conception-logo-partage-voiture_664675-1584.jpg?size=626&ext=jpg&ga=GA1.1.1393112986.1685581487&semt=sph"/>
   </div>
 
   <div>
@@ -167,7 +168,6 @@ let items2= [
   </div>
   
     <div class="section">
-        <h2>Où allez-vous?</h2>
         <v-container class="pa-4 text-center">
           <v-row
             class="fill-height"
@@ -187,14 +187,12 @@ let items2= [
                   >
                     <v-img
                       :src="item.img"
-                      height="225px"
+                      height="300px"
                       cover
                     >
-                      <v-card-title class="text-h6 text-white d-flex flex-column">
+                      <v-card-title class="text-body text-white d-flex flex-column">
                         <div>
-                          <p class="ma-0 text-body-1 font-weight-bold">
-                            {{ item.text }}
-                          </p>
+                          {{ item.text }}
                         </div>
                       </v-card-title>
                     </v-img>
@@ -209,22 +207,22 @@ let items2= [
     <v-hover v-slot="{ isHovering, props }">
       <v-card
         class="mx-auto"
-        color="grey-lighten-4"
+        color="black"
         v-bind="props"
       >
         <v-img
           :aspect-ratio="16/9"
-          height="300px"
+          height="350px"
           cover
-          src="https://cdn.vuetifyjs.com/images/cards/road.jpg"
+          src="https://img.freepik.com/photos-gratuite/voiture-taxi-emplacement-marque-pointeur-pin-smartphone-pour-concept-service-transport-ligne-banniere-web-dessin-anime-icone-symbole-arriere-plan-illustration-3d_56104-1999.jpg?size=626&ext=jpg&ga=GA1.2.1393112986.1685581487&semt=sph"
         >
           <v-expand-transition>
             <div
               v-if="isHovering"
-              class="d-flex transition-fast-in-fast-out bg-blue-darken-2 v-card--reveal text-h2"
+              class="d-flex transition-fast-in-fast-out bg-cyan v-card--reveal text-h2"
               style="height: 100%;"
             >
-              A very good price
+              Des prix incroyables
             </div>
           </v-expand-transition>
         </v-img>
@@ -240,12 +238,85 @@ let items2= [
 
           <div class="font-weight-light text-h6 mb-2">
             Avec GoCar allez loin à moindre prix. <br> 
-            Une solution économique et iéale pour vos voyages
+            Une solution économique et iéale pour vos voyages.
           </div>
         </v-card-text>
       </v-card>
     </v-hover>
   </div>
+
+  
+  <div>
+  <v-footer class="bg-transparent">
+      <div justify="start">
+        <span class="text-h4 text-blue">Contacts</span>
+        <v-list>
+        <v-list-item
+            :prepend-icon="mdiPhone"
+            title="(229) 67724073"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiWhatsapp"
+            title="(229) 96085580"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiEmail"
+            title="gocar@gmail.com"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiMapMarker"
+            title="Agontikon, FL 79938"
+        ></v-list-item>
+        </v-list>
+      </div>
+      
+      <v-row justify="center" no-gutters>
+        <v-btn
+        v-for="link in links"
+        :key="link"
+        color="black"
+        variant="text"
+        class="mx-2"
+        rounded="xl"
+      >
+        {{ link }}
+      </v-btn>
+      <v-col class="text-center mt-4" cols="12">
+        {{ new Date().getFullYear() }} — <strong>GoCar</strong>
+      </v-col>
+    </v-row>
+
+    <div justify="end">
+        <h2 class="text-h4 text-blue">Réseaux sociaux</h2>
+        <v-list>
+        <v-list-item
+            :prepend-icon="mdiFacebook"
+            title="Facebook"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiInstagram"
+            title="Instagram"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiLinkedin"
+            title="LinkeDn"
+        ></v-list-item>
+
+        <v-list-item
+            :prepend-icon="mdiTwitter"
+            title="Twitter"
+        ></v-list-item>
+        </v-list>
+    </div>
+  </v-footer>
+</div>
+</v-main>
+</v-layout>
 </template>
 
 <style scoped>
@@ -259,9 +330,8 @@ let items2= [
   color: rgb(45, 45, 137);
 }
 .image{
-  margin: 20px auto;
-  padding-top:50px ;
-  height: 400px
+  padding-top:10px ;
+  height: 600px
 }
 
 .section{

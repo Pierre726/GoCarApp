@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import {useRouter} from 'vue-router'
+import { mdiCalendar, mdiClock } from '@mdi/js';
 
 let router = useRouter()
 let numPermis = ref()
@@ -83,17 +84,27 @@ function submit(){
             ></v-text-field>
           </v-col>
           <v-col cols="4">
-            <v-text-field
-              v-model="dateTrajet"
-              label="Date du Trajet"
-              placeholder="ex: aaaa:mm:jj"
-            ></v-text-field>
+            <!-- <VCalendar /> -->
+            <V-date-picker v-model.string="dateTrajet" trim-weeks 
+              :masks="{modelValue:'YYYY-MM-DD'}"
+            >
+              <template #default="{inputValue, inputEvents}"> 
+                <v-text-field
+                 :value="inputValue"
+                 autocomplete="off"
+                 placeholder="Date du trajet"
+                 v-on="inputEvents"
+                 :append-inner-icon="mdiCalendar"
+                ></v-text-field>
+              </template>
+            </V-date-picker>
           </v-col>
          </v-row>
           <v-text-field
             v-model="heureDepart"
             label="Heure de départ"
             placeholder="ex: 14:00"
+            :append-inner-icon="mdiClock"
           ></v-text-field>
          <v-row>
           <v-col cols="6">

@@ -34,7 +34,7 @@ let villes=ref(['Abomey', 'Aplahoué','Banikoara', 'Bassila', 'Bembèrèkè', 'B
 <template>
     <v-layout>
         <v-main>
-    <v-app-bar color="grey-lighten-2" density="prominent"
+    <v-app-bar color="transparent" density="prominent"
           height="30"
           >
             <template v-slot:append>
@@ -65,9 +65,11 @@ let villes=ref(['Abomey', 'Aplahoué','Banikoara', 'Bassila', 'Bembèrèkè', 'B
               </RouterLink>
               <ProfilUtilisateur></ProfilUtilisateur>
             </template>
-            <div class="d-flex  w-100">
-              <h1 class="up">Go<span class="blue">Car</span></h1>
-            </div>
+            <a href="/protected-page">
+                <div class="d-flex  w-100">
+                 <h1 class="up">Go<span class="blue">Car</span></h1>
+                </div>
+            </a>
           </v-app-bar>
     <v-container>
      <h1 class="text-center text-h3 pb-4">Où allez-vous?</h1>
