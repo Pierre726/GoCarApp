@@ -85,6 +85,16 @@ const router = createRouter({
       name: 'contacts',
       component: () => import('../views/ContactPage.vue')
     },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('../views/DashboardPage.vue')
+    },
+    {
+      path: '/dashboard/allTrajets',
+      name: 'dashboard-trajets',
+      component: () => import('../views/AllTrajets.vue')
+    }
   ]
 })
 
